@@ -1,7 +1,10 @@
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MapGenerator : MonoBehaviour
 {
@@ -149,11 +152,17 @@ public class MapGenerator : MonoBehaviour
     [SerializeField] private Vector2 roomSize; // Tamaño de cada habitacion
     [SerializeField] public int nRooms; // Numero de habitaciones a generar
 
+    [SerializeField] private TMP_InputField nR;
+    [SerializeField] private TMP_InputField habIni;
+
+    [SerializeField] private GameObject panel;
+
     List<Cell> board; // Lista de celdas del mapa
 
     private void Start()
     {
-        MazeGenerator(); // Generar el mapa al iniciar
+        panel.SetActive(true);
+        //MazeGenerator(); // Generar el mapa al iniciar
     }
     public void Generate()
     {
@@ -162,7 +171,12 @@ public class MapGenerator : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
+        Debug.Log(nR.text);
+        Debug.Log(habIni.text);
+        SetHabInicial(int.Parse(habIni.text));
+        SetNHabitaciones(int.Parse(nR.text));
 
+        panel.SetActive(false);
         // Genera el nuevo laberinto
         MazeGenerator();
     }
@@ -272,5 +286,15 @@ public class MapGenerator : MonoBehaviour
             neighbors.Add(cell + 1);
         }
         return neighbors; // Devolver la lista de vecinos no visitados
+    }
+
+    public void SetNHabitaciones(int n)
+    {
+        nRooms = n;
+    }
+
+    public void SetHabInicial(int i)
+    {
+        initPosition = i;
     }
 }
