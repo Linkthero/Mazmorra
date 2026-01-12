@@ -614,7 +614,6 @@ MonoBehaviour:
   nR: {fileID: 952065865}
   habIni: {fileID: 1827328929}
   panel: {fileID: 2120561766}
-  player: {fileID: 4904944569998535715, guid: e73518b733482254593917d88aeefe1e, type: 3}
 --- !u!4 &347060597
 Transform:
   m_ObjectHideFlags: 0
@@ -816,7 +815,7 @@ Light:
   serializedVersion: 11
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2
+  m_Intensity: 0.5
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208

@@ -25,7 +25,6 @@ public class MapGenerator : MonoBehaviour
     [SerializeField] private TMP_InputField habIni;
 
     [SerializeField] private GameObject panel;
-    [SerializeField] private GameObject player;
 
     List<Cell> board; // Lista de celdas del mapa
 
@@ -133,17 +132,9 @@ public class MapGenerator : MonoBehaviour
                 var newRoom = Instantiate(room, new Vector3(i * roomSize.x, 0, j * roomSize.y),
                     Quaternion.identity, transform).GetComponent<Room>();
                 newRoom.UpdateRoom(board[i + j * size.x].status); // Actualizar las puertas de la habitacion
+
             }
         }
-
-        try
-        {
-            Instantiate(player, transform.GetChild(initPosition - 1).GetComponent<Room>().transform);
-        } catch(Exception e){
-            Debug.Log("ERROR" + e);
-        }
-        
-        Debug.Log("Instancianciado player");
     }
 
     private List<int> CheckNeighbors(int cell)
